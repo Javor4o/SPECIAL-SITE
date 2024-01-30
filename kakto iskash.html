@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javor e lbozzo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha256-LYwvbPWEjkvO+LY+9UuqAcjGWtzu5cc6qO8foIOu5qE=" crossorigin="anonymous" />
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: #333;
+            background-color: #f8f9fa;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #007bff;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #555;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+        .contact-info {
+            width: 100%;
+            padding: 20px;
+            background-color: #007bff;
+            color: #fff;
+            border-top: 2px solid #0056b3;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .contact-info p {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+        }
+
+        .mini-window {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #0056b3;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            flex-direction: column;
+        }
+
+        .mini-window i {
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.5em;
+        }
+
+        .payment-window,
+        .price-window {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #ddd;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment-window i,
+        .price-window i {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            color: #007bff;
+        }
+
+        .payment-methods,
+        .price-list {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .payment-methods li,
+        .price-list li {
+            margin-bottom: 10px;
+        }
+
+        .view-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <h1>Javor e lbozzo</h1>
+        <p>Embrace the essence of Javor with style and sophistication. This site proudly declares that Javor e lbozzo!</p>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac lorem velit. Phasellus malesuada fringilla mi, nec aliquam sem tristique in. Duis id bibendum elit. Ut scelerisque est ac erat elementum, sit amet fermentum lacus aliquam.</p>
+
+        <p>Nullam et arcu ultricies, consectetur turpis vel, commodo felis. Nam ut risus vel ligula vestibulum feugiat in eu odio. Vivamus ullamcorper sapien eget urna vulputate ultricies. Sed eu felis sit amet ligula aliquet vestibulum a nec eros.</p>
+
+        <div class="payment-window" id="paymentWindow">
+            <i class="fas fa-info-circle"></i>
+            <p>Choose your preferred payment method:</p>
+            <ul class="payment-methods">
+                <li><i class="fab fa-cc-visa"></i> Visa</li>
+                <li><i class="fab fa-cc-mastercard"></i> Mastercard</li>
+                <li><i class="fab fa-cc-amex"></i> American Express</li>
+                <!-- Add more payment methods as needed -->
+            </ul>
+            <button class="view-button" onclick="togglePaymentWindow()">Close</button>
+        </div>
+
+        <div class="social-icons">
+            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+
+        <div class="mini-window" onclick="togglePaymentWindow()">
+            <i class="fas fa-info-circle"></i>
+            <p>dani e negyr</p>
+        </div>
+
+        <div class="price-window" id="priceWindow">
+            <p>Prices:</p>
+            <ul class="price-list">
+                <li><i class="fas fa-tags"></i> Cadet: £40</li>
+                <!-- Add more items as needed -->
+            </ul>
+            <button class="view-button" onclick="togglePriceWindow()">View</button>
+        </div>
+    </div>
+
+    <div class="contact-info">
+        <a href="mailto:javorbozzo@email.com"><i class="fas fa-envelope"></i>javorbozzo@email.com</a>
+        <a href="tel:+123456789"><i class="fas fa-phone"></i>+1 (234) 567-89</a>
+    </div>
+
+    <script>
+        function togglePaymentWindow() {
+            var paymentWindow = document.getElementById('paymentWindow');
+            paymentWindow.style.display = (paymentWindow.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function togglePriceWindow() {
+            var priceWindow = document.getElementById('priceWindow');
+            priceWindow.style.display = (priceWindow.style.display === 'block') ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javor eStore</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.
+    0/css/all.min.css" integrity="sha256-LYwvbPWEjkvO+LY+9UuqAcjGWtzu5cc6qO8foIOu5qE=" crossorigin="anonymous" />
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: #333;
+            background-color: #f8f9fa;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #007bff;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #555;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 50px 20px;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product-price {
+            font-size: 1.2em;
+            color: #007bff;
+        }
+
+        .add-to-cart {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-top: 15px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .add-to-cart:hover {
+            background-color: #0056b3;
+        }
+
+        .cart-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-icon:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <div class="product-card">
+            <img src="https://cdn.discordapp.com/attachments/889115559936012300/1201961064376582144/javorangry.jpg?ex=65cbb879&is=65b94379&hm=0ddd6977c02d5591bc20b30df886b3d9778ce2256a38a7cdc079dd32838601ba&" alt="Product 1">
+            <div class="product-info">
+                <div class="product-title">JavorRage</div>
+                <div class="product-price">£50.00</div>
+                <button class="add-to-cart" onclick="addToCart('Product 1', 50.00)">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://cdn.discordapp.com/attachments/889115559936012300/1201960442730401792/20231024_233847.jpg?ex=65cbb7e4&is=65b942e4&hm=843dba8703c25686289b5eade291e0c2b1b5e62067f01e81ae39645a4001ef53&Product 2">
+            <div class="product-info">
+                <div class="product-title">JavorCici</div>
+                <div class="product-price">£60.00</div>
+                <button class="add-to-cart" onclick="addToCart('Product 2', 60.00)">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <img src="https://cdn.discordapp.com/attachments/1060126304374112309/1201843625022193684/TOPKITE_NA_JAVIER___Sigma_Group_-_Discord_9.1.2024_._23_23_07.png?ex=65cb4b19&is=65b8d619&hm=fff438097f7e7efc0167be91df5c372527799e52ce109f3e024524a6a1aec153&"Product 3">
+            <div class="product-info">
+                <div class="product-title">Danigashti</div>
+                <div class="product-price">£70.00</div>
+                <button class="add-to-cart" onclick="addToCart('Product 3', 70.00)">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-icon" onclick="showCart()">
+        <i class="fas fa-shopping-cart"></i>
+    </div>
+
+    <script>
+        var cartItems = [];
+
+        function addToCart(product, price) {
+            cartItems.push({ product: product, price: price });
+            alert('Added to cart: ' + product);
+        }
+
+        function showCart() {
+            if (cartItems.length === 0) {
+                alert('Your cart is empty');
+            } else {
+                var cartMessage = 'Your Cart:\n\n';
+                cartItems.forEach(function (item) {
+                    cartMessage += item.product + ' - £' + item.price.toFixed(2) + '\n';
+                });
+                alert(cartMessage);
+            }
+        }
+    </script>
+</body>
+</html>
